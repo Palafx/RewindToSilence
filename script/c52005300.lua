@@ -5,12 +5,12 @@ function s.initial_effect(c)
 	--xyz summon
 	Xyz.AddProcedure(c,nil,8,2)
 	c:EnableReviveLimit()
-	--attack twice
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_EXTRA_ATTACK)
-	e1:SetValue(1)
-	c:RegisterEffect(e1)
+	--multiattack
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(EFFECT_EXTRA_ATTACK)
+	e3:SetValue(function (e,c) return e:GetHandler():GetOverlayCount()-1 end)
+	c:RegisterEffect(e3)
 	--negate
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(id,0))
